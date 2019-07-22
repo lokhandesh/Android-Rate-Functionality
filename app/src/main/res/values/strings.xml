@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">RatingApp</string>
+    <string name="title">Rate The Book</string>
 </resources>

@@ -1,70 +1,80 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-        <variable name="book" type="com.example.santoshlokhande.ratingapp.db.entity.Book"/>
+
+        <variable
+            name="book"
+            type="com.example.santoshlokhande.ratingapp.db.entity.Book" />
 
     </data>
 
-<RelativeLayout
-    android:id="@+id/mainRel"
-        android:orientation="vertical"
+    <android.support.constraint.ConstraintLayout
+        android:id="@+id/mainRel"
         android:layout_width="match_parent"
-        android:layout_height="120dp"
-        android:paddingEnd="8dp"
-        android:paddingStart="8dp"
-        android:paddingTop="8dp"
-        android:background="#ffffff"
-        app:cardBackgroundColor="#ffffff">
+        android:layout_height="wrap_content">
 
 
         <ImageView
             android:id="@+id/bookIcon"
             android:layout_width="96dp"
             android:layout_height="96dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginTop="8dp"
             android:src="@drawable/book"
-            android:layout_centerVertical="true"/>
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
 
         <TextView
-                android:id="@+id/text_view_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:ellipsize="end"
-                android:maxLines="1"
-                android:text="Title"
-                android:textColor="#000000"
-                android:textStyle="bold"
-                android:layout_toRightOf="@+id/bookIcon"
-                android:layout_marginLeft="10dp"
-                android:textAppearance="@style/TextAppearance.AppCompat.Medium"/>
+            android:id="@+id/text_view_title"
+            android:layout_width="0dp"
+            android:layout_height="29dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="@{book.title}"
+            android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+            android:textColor="#000000"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/bookIcon"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:layout_editor_absoluteY="12dp" />
 
 
-    <RatingBar
-        android:id="@+id/retingBar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:minHeight="48dp"
-        android:maxHeight="48dp"
-        android:layout_marginLeft="-4dp"
-        android:layout_marginRight="-4dp"
-        android:rating="2.5"
-        android:numStars="5"
-        android:isIndicator="true"
-        android:layout_toRightOf="@+id/bookIcon"
-        android:layout_below="@+id/text_view_title"/>
+        <RatingBar
+            android:id="@+id/retingBar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:isIndicator="true"
+            android:maxHeight="48dp"
+            android:minHeight="48dp"
+            android:numStars="5"
+            android:rating="@{book.rating}"
+            app:layout_constraintStart_toEndOf="@+id/bookIcon"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_title" />
 
 
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="#c3c3c3"
-        android:layout_marginLeft="20dp"
-        android:layout_marginRight="20dp"
-        android:layout_alignParentBottom="true"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:background="#c3c3c3"
+            app:layout_constraintStart_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/bookIcon" />
 
-</RelativeLayout>
+
+    </android.support.constraint.ConstraintLayout>
 
 </layout>
