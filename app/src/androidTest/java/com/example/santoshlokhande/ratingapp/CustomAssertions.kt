@@ -22,11 +22,11 @@ class CustomAssertions {
       }
 
       if (view !is RecyclerView) {
-        throw IllegalStateException("The asserted view is not RecyclerView")
+        throw IllegalStateException("This asserted view is not RecyclerView")
       }
 
       if (view.adapter == null) {
-        throw IllegalStateException("No adapter is assigned to RecyclerView")
+        throw IllegalStateException("Here adapter is assigned to RecyclerView")
       }
 
       ViewMatchers.assertThat("RecyclerView item count of book", view.adapter!!.itemCount, CoreMatchers.equalTo(count))

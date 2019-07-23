@@ -46,10 +46,18 @@ class BookViewModelTest {
         val observer = mock(Observer::class.java) as Observer<List<Book>>
         this.bookViewModel.booksList.observeForever(observer)
 
-        this.bookViewModel.getAllBooks();
 
      //   assertNotNull(this.bookViewModel.allNotes.value)
-        assertEquals(this.bookViewModel.booksList,this.bookViewModel.booksList)
+
+      //  val si = bookViewModel.booksList.value?.size
+
+        val size=this.bookViewModel.getAllBooks();
+
+
+        Log.d("SIZE","===="+size)
+
+      //  this.bookViewModel.getAllBooks();
+        assertEquals( this.bookViewModel.getAllBooks(), this.bookViewModel.getAllBooks())
 
     }
 

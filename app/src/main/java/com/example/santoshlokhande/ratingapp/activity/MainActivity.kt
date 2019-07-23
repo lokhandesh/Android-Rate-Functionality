@@ -91,7 +91,6 @@ class MainActivity : AppCompatActivity() {
 
     private fun showDialog(currentNote: Book) {
 
-
         val viewGroup = findViewById<ViewGroup>(android.R.id.content)
 
         val dialogView = LayoutInflater.from(this).inflate(R.layout.rate_dialog, viewGroup, false)
@@ -125,7 +124,6 @@ class MainActivity : AppCompatActivity() {
 
         dialog.setCancelable(false)
         dialog.show()
-
     }
 
     override fun onPause() {
