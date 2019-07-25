@@ -1,12 +1,11 @@
-package com.example.santoshlokhande.ratingapp
+package com.example.santoshlokhande.ratingapp.viewmodel
 
 import android.app.Application
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
 import android.util.Log
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.example.santoshlokhande.ratingapp.db.entity.Book
 import com.example.santoshlokhande.ratingapp.repository.BooksRepository
-import com.example.santoshlokhande.ratingapp.viewmodel.BookViewModel
+import junit.framework.Assert
 import junit.framework.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
@@ -14,12 +13,10 @@ import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
-import org.mockito.Mockito.mock
 import org.mockito.MockitoAnnotations
 
 @RunWith(JUnit4::class)
-class BookViewModelTest {
-
+class BookViewModelTest{
     @get:Rule
     val instantTaskExecutorRule = InstantTaskExecutorRule()
 
@@ -32,6 +29,9 @@ class BookViewModelTest {
     @Mock
     lateinit var repository: BooksRepository
 
+    @Mock
+    lateinit var book: Book
+
     @Before
     fun setUp() {
         MockitoAnnotations.initMocks(this)
@@ -41,40 +41,21 @@ class BookViewModelTest {
 
     @Test
     fun getAllBooks(){
-       /* Mockito.`when`(this.application.getRepositories(ArgumentMatchers.anyString())).thenAnswer {
-            return@thenAnswer Maybe.just(ArgumentMatchers.anyList<Book>())
-        }*/
 
-        Thread {
-            val observer = mock(Observer::class.java) as Observer<List<Book>>
-            this.bookViewModel.booksList.observeForever(observer)
-            val size = this.bookViewModel.getAllBooks();
-            assertNotNull(this.bookViewModel.booksList)
-        }.start()
+        var boolist=bookViewModel.getAllBooks()
+        assertNotNull(boolist)
 
     }
 
     @Test
     fun getRandomNumber(){
         var randomValue=this.bookViewModel.getRandomValue(10)
-
-        Log.d("HERE","RANDOM VALUE"+randomValue)
-
         assertNotNull(randomValue)
 
     }
 
     @Test
     fun update() {
-
-        Thread{
-
-        }.start()
-
+        bookViewModel.update(book)
     }
-
-
-
-
-
 }

@@ -28,10 +28,6 @@ class BooksRepository(application: Application) {
         return allBooks
     }
 
-    fun insert(book: Book) {
-        val insertNoteAsyncTask = InsertBookAsyncTask(bookDao).execute(book)
-    }
-
     private class UpdateBookAsyncTask(bookDao: BookDao) : AsyncTask<Book, Unit, Unit>() {
         val bookDao = bookDao
 
@@ -40,13 +36,13 @@ class BooksRepository(application: Application) {
         }
     }
 
-    private class InsertBookAsyncTask(bookDao: BookDao) : AsyncTask<Book, Unit, Unit>() {
+   /* private class InsertBookAsyncTask(bookDao: BookDao) : AsyncTask<Book, Unit, Unit>() {
         val bookDao = bookDao
 
         override fun doInBackground(vararg p0: Book?) {
             bookDao.insert(p0[0]!!)
         }
 
-    }
+    }*/
 
 }
