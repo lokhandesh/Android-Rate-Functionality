@@ -1,7 +1,7 @@
 package com.example.santoshlokhande.ratingapp.repository
 
 import android.app.Application
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.LiveData
 import android.os.AsyncTask
 import com.example.santoshlokhande.ratingapp.db.BookDatabase
 import com.example.santoshlokhande.ratingapp.db.dao.BookDao

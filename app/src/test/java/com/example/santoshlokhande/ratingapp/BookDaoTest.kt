@@ -1,10 +1,9 @@
 package com.example.santoshlokhande.ratingapp
 
 import android.app.Application
-import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.arch.lifecycle.Observer
-import android.arch.persistence.room.Room
-import android.util.Log
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
+import androidx.room.Room
 import com.example.santoshlokhande.ratingapp.db.BookDatabase
 import com.example.santoshlokhande.ratingapp.db.dao.BookDao
 import com.example.santoshlokhande.ratingapp.db.entity.Book

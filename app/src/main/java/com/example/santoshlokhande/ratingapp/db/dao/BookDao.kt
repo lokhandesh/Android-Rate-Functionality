@@ -1,7 +1,7 @@
 package com.example.santoshlokhande.ratingapp.db.dao
 
-import android.arch.lifecycle.LiveData
-import android.arch.persistence.room.*
+import androidx.lifecycle.LiveData
+import androidx.room.*
 import com.example.santoshlokhande.ratingapp.db.entity.Book
 
 @Dao

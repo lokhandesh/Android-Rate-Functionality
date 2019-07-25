@@ -1,7 +1,7 @@
 package com.example.santoshlokhande.ratingapp.db.entity
 
-import android.arch.persistence.room.Entity
-import android.arch.persistence.room.PrimaryKey
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 
 @Entity(tableName = "books_table")
 data class Book(

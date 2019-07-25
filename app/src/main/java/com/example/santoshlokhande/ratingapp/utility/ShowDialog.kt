@@ -14,7 +14,7 @@ import com.example.santoshlokhande.ratingapp.viewmodel.BookViewModel
 
     val dialogView = LayoutInflater.from(context).inflate(R.layout.rate_dialog, null, false)
 
-    val builder = android.support.v7.app.AlertDialog.Builder(context)
+    val builder = androidx.appcompat.app.AlertDialog.Builder(context)
 
     builder.setView(dialogView)
 

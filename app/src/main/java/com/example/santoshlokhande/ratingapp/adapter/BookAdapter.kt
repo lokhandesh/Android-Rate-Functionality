@@ -1,13 +1,13 @@
 package com.example.santoshlokhande.ratingapp.adapter
 
 import android.content.Context
-import android.support.constraint.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintLayout
 import android.widget.TextView
-import android.support.v7.widget.RecyclerView
+import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.support.v7.widget.AppCompatRatingBar
+import androidx.appcompat.widget.AppCompatRatingBar
 import android.widget.RelativeLayout
 import com.example.santoshlokhande.ratingapp.R
 import com.example.santoshlokhande.ratingapp.activity.MainActivity

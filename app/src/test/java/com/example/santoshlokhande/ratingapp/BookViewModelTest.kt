@@ -1,23 +1,19 @@
 package com.example.santoshlokhande.ratingapp
 
 import android.app.Application
-import android.arch.core.executor.testing.InstantTaskExecutorRule
-import android.arch.lifecycle.LiveData
-import android.arch.lifecycle.Observer
+import androidx.arch.core.executor.testing.InstantTaskExecutorRule
+import androidx.lifecycle.Observer
 import android.util.Log
 import com.example.santoshlokhande.ratingapp.db.entity.Book
 import com.example.santoshlokhande.ratingapp.repository.BooksRepository
 import com.example.santoshlokhande.ratingapp.viewmodel.BookViewModel
-import junit.framework.Assert.assertEquals
 import junit.framework.Assert.assertNotNull
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
-import org.mockito.ArgumentMatchers
 import org.mockito.Mock
-import org.mockito.Mockito
 import org.mockito.Mockito.mock
 import org.mockito.MockitoAnnotations
 

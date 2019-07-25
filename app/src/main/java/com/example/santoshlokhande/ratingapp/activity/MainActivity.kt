@@ -1,13 +1,13 @@
 package com.example.santoshlokhande.ratingapp.activity
 
-import android.arch.lifecycle.Observer
-import android.support.v7.app.AppCompatActivity
+import androidx.lifecycle.Observer
+import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.arch.lifecycle.ViewModelProviders
-import android.support.v7.widget.LinearLayoutManager
-import android.support.v7.widget.RecyclerView
+import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import android.os.Handler
-import android.support.v7.app.ActionBar
+import androidx.appcompat.app.ActionBar
 import android.view.*
 import android.widget.*
 import com.example.santoshlokhande.ratingapp.R

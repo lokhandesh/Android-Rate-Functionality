@@ -1,8 +1,8 @@
 package com.example.santoshlokhande.ratingapp.viewmodel
 
 import android.app.Application
-import android.arch.lifecycle.AndroidViewModel
-import android.arch.lifecycle.LiveData
+import androidx.lifecycle.AndroidViewModel
+import androidx.lifecycle.LiveData
 import com.example.santoshlokhande.ratingapp.db.entity.Book
 import com.example.santoshlokhande.ratingapp.repository.BooksRepository
 import java.util.*
