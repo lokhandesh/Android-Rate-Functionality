@@ -1,25 +1,29 @@
 package com.example.santoshlokhande.ratingapp
 
 import android.app.Application
+import android.arch.core.executor.testing.InstantTaskExecutorRule
 import android.arch.lifecycle.Observer
 import android.arch.persistence.room.Room
-import android.content.Context
 import android.util.Log
 import com.example.santoshlokhande.ratingapp.db.BookDatabase
 import com.example.santoshlokhande.ratingapp.db.dao.BookDao
 import com.example.santoshlokhande.ratingapp.db.entity.Book
-import com.example.santoshlokhande.ratingapp.viewmodel.BookViewModel
-import com.nhaarman.mockitokotlin2.verify
 import junit.framework.Assert.assertEquals
-import org.junit.*
+import junit.framework.Assert.assertNotNull
+import org.junit.After
+import org.junit.Before
+import org.junit.Rule
+import org.junit.Test
 import org.junit.runner.RunWith
 import org.junit.runners.JUnit4
 import org.mockito.Mock
 import org.mockito.MockitoAnnotations
-import java.util.*
 
 @RunWith(JUnit4::class)
 class BookDaoTest {
+
+    @get:Rule
+    val instantTaskExecutorRule = InstantTaskExecutorRule()
 
     @Mock
     lateinit var bookDao: BookDao
@@ -31,6 +35,9 @@ class BookDaoTest {
     lateinit var application : Application
 
     @Mock
+    lateinit var book: Book
+
+    @Mock
     lateinit var observer: Observer<List<Book>>
 
     @Before
@@ -40,26 +47,44 @@ class BookDaoTest {
         bookDatabase = Room.inMemoryDatabaseBuilder(this.application,BookDatabase::class.java)
                 .allowMainThreadQueries().build();
         bookDao = bookDatabase.noteDao();
+        bookDatabase.isOpen
+
 
     }
 
     @Test
     fun insert(){
 
-        val book = Book("Testing Book",3f)
-        //bookDao.getAllNotes().observeForever(observer);
-        val userId=bookDao.insert(book)
-        val userFromDb = bookDao.getAllNotes()
+        Thread {
+            val book = Book("Testing Book", 3f)
+            //bookDao.getAllNotes().observeForever(observer);
+            val userId = bookDao.insert(book)
+            val userFromDb = bookDao.getAllBooks()
 
-        Log.d("Here","VALUE"+bookDatabase.noteDao().insert(book))
+            assertEquals(userId, 1)
+        }.start()
 
+    }
 
-        //bookDao?.insert(book)
+    @Test
+    fun getAllBooks(){
 
-      //  assertEquals(userId, 1)
-      //  assertEquals(userFromDb?., user.userName)
+        Thread {
+            val book = Book("Testing Book", 3f)
+            val userFromDb = bookDao.getAllBooks()
+            assertEquals(10, userFromDb)
+        }.start()
 
-      //  verify(observer).onChanged(Collections.singletonList(book))
+    }
+
+    @Test
+    fun update(){
+
+        Thread {
+            val userId = bookDao.updateBooks(3f,"A Suitable Boy")
+            assertNotNull(userId)
+
+        }.start()
 
     }
 

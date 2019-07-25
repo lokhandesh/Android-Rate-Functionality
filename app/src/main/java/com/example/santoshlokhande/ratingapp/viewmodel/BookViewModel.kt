@@ -9,9 +9,7 @@ import com.example.santoshlokhande.ratingapp.repository.BooksRepository
 
 class BookViewModel(application: Application) : AndroidViewModel(application) {
 
-
-    private var repository: BooksRepository =
-        BooksRepository(application)
+    private var repository: BooksRepository = BooksRepository(application)
 
     public var booksList: LiveData<List<Book>> = repository.getAllBookList()
 

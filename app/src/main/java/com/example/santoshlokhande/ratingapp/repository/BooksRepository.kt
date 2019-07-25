@@ -17,11 +17,11 @@ class BooksRepository(application: Application) {
             application
         )!!
         bookDao = database.noteDao()
-        allBooks = bookDao.getAllNotes()
+        allBooks = bookDao.getAllBooks()
     }
 
     fun update(book: Book) {
-        val updateNoteAsyncTask = UpdateNoteAsyncTask(bookDao).execute(book)
+        val updateNoteAsyncTask = UpdateBookAsyncTask(bookDao).execute(book)
     }
 
     fun getAllBookList(): LiveData<List<Book>> {
@@ -29,18 +29,18 @@ class BooksRepository(application: Application) {
     }
 
     fun insert(book: Book) {
-        val insertNoteAsyncTask = InsertNoteAsyncTask(bookDao).execute(book)
+        val insertNoteAsyncTask = InsertBookAsyncTask(bookDao).execute(book)
     }
 
-    private class UpdateNoteAsyncTask(bookDao: BookDao) : AsyncTask<Book, Unit, Unit>() {
+    private class UpdateBookAsyncTask(bookDao: BookDao) : AsyncTask<Book, Unit, Unit>() {
         val bookDao = bookDao
 
         override fun doInBackground(vararg p0: Book) {
-            bookDao.updateNotes(p0[0].rating,p0[0].title)
+            bookDao.updateBooks(p0[0].rating,p0[0].title)
         }
     }
 
-    private class InsertNoteAsyncTask(bookDao: BookDao) : AsyncTask<Book, Unit, Unit>() {
+    private class InsertBookAsyncTask(bookDao: BookDao) : AsyncTask<Book, Unit, Unit>() {
         val bookDao = bookDao
 
         override fun doInBackground(vararg p0: Book?) {

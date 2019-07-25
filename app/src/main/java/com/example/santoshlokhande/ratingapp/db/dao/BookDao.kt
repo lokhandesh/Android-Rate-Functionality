@@ -10,13 +10,10 @@ interface BookDao {
     @Insert
     fun insert(book: Book)
 
-    @Query("DELETE FROM books_table")
-    fun deleteAllNotes()
-
     @Query("SELECT * FROM books_table ")
-    fun getAllNotes(): LiveData<List<Book>>
+    fun getAllBooks(): LiveData<List<Book>>
 
     @Query("UPDATE books_table SET rating = :rating WHERE title =:title")
-    fun updateNotes(rating: Float, title: String)
+    fun updateBooks(rating: Float, title: String)
 
 }

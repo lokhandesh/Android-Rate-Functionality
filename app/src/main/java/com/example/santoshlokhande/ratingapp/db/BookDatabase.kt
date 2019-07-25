@@ -18,7 +18,7 @@ abstract class BookDatabase : RoomDatabase() {
     companion object {
         private var instance: BookDatabase? = null
 
-        fun getInstance(context: Context): BookDatabase? {
+        fun  getInstance(context: Context): BookDatabase? {
             if (instance == null) {
                 synchronized(BookDatabase::class) {
                     instance = Room.databaseBuilder(
@@ -26,7 +26,7 @@ abstract class BookDatabase : RoomDatabase() {
                         BookDatabase::class.java, "notes_database"
                     )
                         .fallbackToDestructiveMigration()
-                        .addCallback(roomCallback)
+                        .addCallback(roomCallback).allowMainThreadQueries()
                         .build()
                 }
             }

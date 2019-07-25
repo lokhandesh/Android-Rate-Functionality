@@ -21,7 +21,7 @@ import com.example.santoshlokhande.ratingapp.viewmodel.BookViewModel
 
 class MainActivity : AppCompatActivity() {
 
-    val rnd = Random()
+    val random = Random()
     lateinit var progressBar: ProgressBar
     var bookList = listOf<Book>()
     private val handler = Handler()
@@ -76,7 +76,7 @@ class MainActivity : AppCompatActivity() {
         override fun run() {
             /* do what you need to do */
 
-            var randomValue = rnd.nextInt(10)
+            var randomValue = random.nextInt(10)
             val currentBook = bookList[randomValue]
 
             val random = Random().nextInt(5 - 1 + 1) + 1
