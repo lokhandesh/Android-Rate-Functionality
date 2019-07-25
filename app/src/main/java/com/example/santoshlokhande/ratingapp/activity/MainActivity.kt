@@ -8,20 +8,18 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.os.Handler
 import android.support.v7.app.ActionBar
-import android.support.v7.app.AlertDialog
 import android.view.*
 import android.widget.*
-import java.util.*
 import com.example.santoshlokhande.ratingapp.R
 import com.example.santoshlokhande.ratingapp.R.id.tvTitle
 import com.example.santoshlokhande.ratingapp.adapter.BookAdapter
 import com.example.santoshlokhande.ratingapp.db.entity.Book
+import com.example.santoshlokhande.ratingapp.utility.showCustomDialogView
 import com.example.santoshlokhande.ratingapp.viewmodel.BookViewModel
 
 
 class MainActivity : AppCompatActivity() {
 
-    val random = Random()
     lateinit var progressBar: ProgressBar
     var bookList = listOf<Book>()
     private val handler = Handler()
@@ -67,63 +65,22 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun itemClick(currentNote: Book) {
-        showDialog(currentNote)
+    fun itemClick(currentbook: Book) {
+       // showDialog(currentNote)
+        showCustomDialogView(this,currentbook,bookViewModel)
     }
 
     private val runnable = object : Runnable {
 
         override fun run() {
-            /* do what you need to do */
 
-            var randomValue = random.nextInt(10)
-            val currentBook = bookList[randomValue]
+            val currentBook = bookList[bookViewModel.getRandomValue(10)]
 
-            val random = Random().nextInt(5 - 1 + 1) + 1
-
-            val updateRate = Book(currentBook.title, random.toFloat())
+            val updateRate = Book(currentBook.title,(bookViewModel.getRandomValue(5)+1).toFloat())
             bookViewModel.update(updateRate)
 
-            /* and here comes the "trick" */
             handler.postDelayed(this, 3000)
         }
-    }
-
-    private fun showDialog(currentNote: Book) {
-
-        val viewGroup = findViewById<ViewGroup>(android.R.id.content)
-
-        val dialogView = LayoutInflater.from(this).inflate(R.layout.rate_dialog, viewGroup, false)
-
-        val builder = AlertDialog.Builder(this)
-
-        builder.setView(dialogView)
-
-        val dialog = builder.create()
-
-        val bookTitle = dialogView.findViewById(R.id.text_view_title) as TextView
-        val retingBar = dialogView.findViewById(R.id.retingBar) as RatingBar
-        val rate = dialogView.findViewById(R.id.rate) as Button
-        val cancel = dialogView.findViewById(R.id.cancel) as Button
-
-        bookTitle.text = currentNote.title
-        retingBar.rating = currentNote.rating.toFloat()
-
-        rate.setOnClickListener {
-
-            val newNote = Book(currentNote.title, retingBar.rating)
-            dialog.dismiss()
-            bookViewModel.update(newNote)
-        }
-
-        cancel.setOnClickListener {
-
-            dialog.dismiss()
-
-        }
-
-        dialog.setCancelable(false)
-        dialog.show()
     }
 
     override fun onPause() {

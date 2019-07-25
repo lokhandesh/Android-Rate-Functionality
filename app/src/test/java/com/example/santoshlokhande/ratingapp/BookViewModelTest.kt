@@ -59,12 +59,21 @@ class BookViewModelTest {
     }
 
     @Test
+    fun getRandomNumber(){
+        var randomValue=this.bookViewModel.getRandomValue(10)
+
+        Log.d("HERE","RANDOM VALUE"+randomValue)
+
+        assertNotNull(randomValue)
+
+    }
+
+    @Test
     fun update() {
 
         Thread{
 
         }.start()
-
 
     }
 

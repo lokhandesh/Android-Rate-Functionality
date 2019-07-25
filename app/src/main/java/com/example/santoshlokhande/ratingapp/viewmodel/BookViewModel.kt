@@ -5,6 +5,7 @@ import android.arch.lifecycle.AndroidViewModel
 import android.arch.lifecycle.LiveData
 import com.example.santoshlokhande.ratingapp.db.entity.Book
 import com.example.santoshlokhande.ratingapp.repository.BooksRepository
+import java.util.*
 
 
 class BookViewModel(application: Application) : AndroidViewModel(application) {
@@ -20,4 +21,9 @@ class BookViewModel(application: Application) : AndroidViewModel(application) {
     fun getAllBooks(): LiveData<List<Book>> {
         return booksList
     }
+
+    fun getRandomValue(value:Int):Int{
+       return Random().nextInt(value)
+    }
+
 }
